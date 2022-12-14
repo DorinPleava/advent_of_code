@@ -9,17 +9,17 @@ class PriorityQueue
     bubble_up(@elements.size - 1)
   end
 
-  def bubble_up(index)
-    parent_index = (index / 2)
+  def bubble_up(row_index)
+    parent_index = (row_index / 2)
 
     # return if we reach the root element
-    return if index <= 1
+    return if row_index <= 1
 
     # or if the parent is already greater than the child
-    return if @elements[parent_index] >= @elements[index]
+    return if @elements[parent_index] >= @elements[row_index]
 
     # otherwise we exchange the child with the parent
-    exchange(index, parent_index)
+    exchange(row_index, parent_index)
 
     # and keep bubbling up
     bubble_up(parent_index)
@@ -41,8 +41,8 @@ class PriorityQueue
     max
   end
 
-  def bubble_down(index)
-    child_index = (index * 2)
+  def bubble_down(row_index)
+    child_index = (row_index * 2)
 
     # stop if we reach the bottom of the tree
     return if child_index > @elements.size - 1
@@ -55,9 +55,9 @@ class PriorityQueue
 
     # there is no need to continue if the parent element is already bigger
     # then its children
-    return if @elements[index] >= @elements[child_index]
+    return if @elements[row_index] >= @elements[child_index]
 
-    exchange(index, child_index)
+    exchange(row_index, child_index)
 
     # repeat the process until we reach a point where the parent
     # is larger than its children

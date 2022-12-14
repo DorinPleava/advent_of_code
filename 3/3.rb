@@ -3,8 +3,8 @@ File.open('input.txt', 'r') do |f|
   input = f.read
 end
 
-priority_values_lower = ('a'..'z').to_a.each.with_index(1).map { |v, index| [v, index] }.to_h
-priority_values_upper = ('A'..'Z').to_a.each.with_index(27).map { |v, index| [v, index] }.to_h
+priority_values_lower = ('a'..'z').to_a.each.with_index(1).map { |v, row_index| [v, row_index] }.to_h
+priority_values_upper = ('A'..'Z').to_a.each.with_index(27).map { |v, row_index| [v, row_index] }.to_h
 
 priority_values = priority_values_lower.merge(priority_values_upper)
 
