@@ -4,7 +4,7 @@ from readInput import readInput
 
 
 def run_challenge(day):
-    day_module = __import__(f'{day}.1', fromlist=['run'])
+    day_module = __import__(f'{day}.{day}', fromlist=['run'])
 
     input = readInput(f'{day}/input.txt')
 

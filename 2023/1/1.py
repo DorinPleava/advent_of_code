@@ -35,13 +35,11 @@ def run_p1(input: list[str]):
     for line in input:
         first_number = None
         second_number = None
-        first_index = None
 
         print(f'line: {line}')
         for index, char in enumerate(line):
             if char.isnumeric():
                 first_number = char
-                first_index = index
                 break
 
         # travel back the line
@@ -88,29 +86,26 @@ def run(input: list[str]):
     for line in input:
         first_number = None
         second_number = None
-        first_index = inf
-        second_index = inf
+        first_index = 999999
+        second_index = 999999
 
         for valid_word in number_words.keys():
             if valid_word in line:
                 if first_index > line.index(valid_word):
                     first_index = line.index(valid_word)
                     first_number = number_words[valid_word]
-                    break
 
         # travel back the line
         for valid_word in number_words.keys():
-            print(f'valid_word[::-1]: {valid_word[::-1]}, line[::-1]: {line[::-1]}')
-            if valid_word[::-1] in line[::-1]:
-                if second_index > line.index(valid_word):
-                    print(f'valid_word: {valid_word}')
+            reversed_line = line[::-1]
+            reversed_word = valid_word[::-1]
+            if reversed_word in reversed_line:
+                if second_index > reversed_line.index(reversed_word):
                     second_number = number_words[valid_word]
-                    second_index = line.index(valid_word)
-                    break
+                    second_index = reversed_line.index(reversed_word)
 
         print(f'for line: {line}, first_number: {first_number}, second_number: {second_number}')
 
         total_sum += int(first_number + second_number)
 
-    print(f'total sum: {total_sum}')
     return total_sum
